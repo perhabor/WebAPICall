@@ -1,0 +1,65 @@
+﻿
+@*@model HubViewModel*@
+@model Hubs
+
+
+
+
+<div>
+
+    <h2>This is now working</h2>
+    <form method="get" asp-controller="home" asp-action="Get">
+        <input type="text" name="name" value="" asp-for="@Model.State" />
+        <span asp-for="@Model.State"></span>
+        <button>Search</button>
+
+        
+    </form>
+
+
+
+    <div class="text-center">
+        <h1 class="display-4">HUBS </h1>
+        <table class="table table-responsive">
+            <thead>
+                <tr>
+                    <th>S/N</th>
+                    <th>Name</th>
+                    <th>State</th>
+                    <th>Address</th>
+                    <th>Website</th>
+                    <th>Tag</th>
+                    <th>Image</th>
+
+                </tr>
+
+            </thead>
+
+
+            @{ int i = 0; }
+            @if (Model.HubList.Count() > 0)
+
+                @foreach (var item in Model.HubList)
+                {
+                    i++;
+        <tr>
+
+            <td>@i</td>
+            <td>@item.</td>
+            <td>@item.Name</td>
+            <td>@item.Address</td>
+            <td>@item.State</td>
+            <td>@item.Website</td>
+            <td>@item.Tag</td>
+            <td>@item.Image</td>
+            <td>
+                <a asp-action="SearchHubs" asp-route-id="@item.Id" class="btn btn-warning btn-sm text-white"></a>
+
+
+            </td>
+        </tr>
+                }
+
+        </table>
+    </div>
+</div>
